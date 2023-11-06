@@ -22,7 +22,7 @@ public class Point{
         this.ord += ord;
     }
     public void afficher(){
-        System.out.print("Je suis un point de coordonnees " + this.abs + " et " + this.ord);
+        System.out.print("\nJe suis un point de coordonnees " + this.abs + " et " + this.ord);
     }
 
     public double getAbs() {

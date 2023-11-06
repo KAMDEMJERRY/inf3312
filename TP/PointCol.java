@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class PointCol extends Point{
     byte couleur;
 
@@ -19,22 +21,40 @@ public class PointCol extends Point{
     public void setCouleur(byte couleur) {
         this.couleur = couleur;
     }
-    public void afficheCol(){
-        afficher();
+
+    @Override
+    public void afficher(){
+        super.afficher();
         System.out.println(" et de couleur " + this.couleur);
     }
 
     public static void main(String[] args){
-        double abs = 2;
 
-        double ord = 3;
+        Point[] tableauPoints = new Point[5];
 
-        byte couleur = 1;
+        int len = tableauPoints.length;
 
-        PointCol pcol = new PointCol(abs, ord , couleur);
-    
-        pcol.afficheCol();
-        pcol.deplacer(abs, ord);
-        pcol.afficheCol();
+        for (int i = 0; i < len; i++){
+
+            Random random = new Random();
+
+            double abs = random.nextDouble();
+
+            double ord = random.nextDouble();
+            
+            byte[] couleur = new byte[1];
+            random.nextBytes(couleur);
+
+            Point p = new Point(abs, ord);
+
+            PointCol  pCol =  new PointCol(abs, ord, couleur[0]);
+
+            tableauPoints[i] = (i%2 == 0) ? p : pCol;
+        }
+
+        for (int i = 0; i < len; i++){
+            tableauPoints[i].afficher();
+        }
     }
+    
 }
